@@ -24,7 +24,6 @@ class App extends Component {
   componentDidMount() { 
     fetch("https://newsapi.org/v2/top-headlines?country=se&apiKey=ae24bb6763034855bf26908e36dcd782")
       .then(function (response) {
-        
       // gör något med det som kom tillbaka
       return response.json()
     } ).then( jsondata => {
