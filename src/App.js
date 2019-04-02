@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Nyhetslista from './components/Nyhetslista';
-import data from './fuskdata';
 
 class App extends Component {
   constructor(props) {
@@ -22,9 +21,12 @@ class App extends Component {
   }
 
   componentDidMount() { 
-    fetch("https://newsapi.org/v2/top-headlines?country=se&apiKey=ae24bb6763034855bf26908e36dcd782")
+    fetch("https://news-api.org/v2/top-headlines?cuntry=se&apiKey=ae24bb6763034855bf26908e36dcd782")
       .then(function (response) {
       // gör något med det som kom tillbaka
+        if (response.status !== 200) {
+          throw Error(`status: ${response.status}`);
+        }
       return response.json()
     } ).then( jsondata => {
       //gör något med json-objektet
@@ -34,7 +36,7 @@ class App extends Component {
         articles: [{
           urlToImage: "fejk.jpg",
           title: "Något gick fel",
-          description: "Du verkar inte vara ansluten till internet..."
+          description: `Något gick fel, ${error.message}`,
         }]
       });
     })
