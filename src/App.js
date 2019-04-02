@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   componentDidMount() { 
-    fetch("https://news-api.org/v2/top-headlines?cuntry=se&apiKey=ae24bb6763034855bf26908e36dcd782")
+    fetch("https://newsapi.org/v2/top-headlines?country=se&apiKey=ae24bb6763034855bf26908e36dcd782")
       .then(function (response) {
       // gör något med det som kom tillbaka
         if (response.status !== 200) {
